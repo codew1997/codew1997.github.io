@@ -241,3 +241,34 @@ th {
   text-align: center;
 
 }
+
+
+.sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-nav ul li {
+  margin: 10px 0;
+}
+
+.sidebar-nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.container {
+  margin-left: 220px;
+  /* leave space for sidebar */
+  padding: 20px;
+  width: 100%;
+}

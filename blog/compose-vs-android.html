@@ -13,6 +13,7 @@
 </head>
 
 <body>
+   <div id="sidebar-container"></div>
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#">CODEBOX</a>
@@ -24,7 +25,6 @@
       </nav>
     </div>
   </header>
-
   <main class="container">
     <article class="post-card">
       <h1 class="post-title">Jetpack Compose vs Android View System</h1>
@@ -68,7 +68,7 @@ fun Greeting(name: String) {
               <td><b>Performance: </b> Potential for frequent redundant UI updates. <br/>
                 <b>Reusable: </b> Much less reuseable as the basic components are predefined.
               </td>
-              <td><b>Performance: </b> Compose uses a diffing algorithm to redraw only the necessary parts of the UI in asynchronous manner.
+              <td><b>Performance: </b> Compose uses a diffing algorithm to redraw only the necessary parts of the UI in asynchronous manner.<br/>
                 <b>Reusable: </b> Compose is highly reusable by where each compononets can be reused.
               </td>
              </tr>
@@ -89,6 +89,14 @@ fun Greeting(name: String) {
         </table>
       </div>
 
+      <!-- Load sidebar -->
+      <script>
+    fetch('sidebar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+      });
+  </script>
       <script src="script/script.js"></script>
 </body>
 
