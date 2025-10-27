@@ -13,7 +13,7 @@
 </head>
 
 <body>
-   <div id="sidebar-container"></div>
+  <div id="sidebar-container"></div>
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#">CODEBOX</a>
@@ -56,7 +56,8 @@
 textView.setText("Hello, " + name + "!");</code></pre>
               </td>
               <td>
-                <b><u>Declarative UI:</u> </b>UI is created in a declarative manner and changes are made directly on the UI. 
+                <b><u>Declarative UI:</u> </b>UI is created in a declarative manner and changes are made directly on the
+                UI.
                 <pre><code>@Composable
 fun Greeting(name: String) {
     Text(text = "Hello, $name!")
@@ -64,39 +65,43 @@ fun Greeting(name: String) {
               </td>
             </tr>
             <!-- 2. -->
-             <tr>
-              <td><b>Performance: </b> Potential for frequent redundant UI updates. <br/>
+            <tr>
+              <td><b>Performance: </b> Potential for frequent redundant UI updates. <br />
                 <b>Reusable: </b> Much less reuseable as the basic components are predefined.
               </td>
-              <td><b>Performance: </b> Compose uses a diffing algorithm to redraw only the necessary parts of the UI in asynchronous manner.<br/>
+              <td><b>Performance: </b> Compose uses a diffing algorithm to redraw only the necessary parts of the UI in
+                asynchronous manner.<br />
                 <b>Reusable: </b> Compose is highly reusable by where each compononets can be reused.
               </td>
-             </tr>
-             <!-- 3. -->
-             <tr>
+            </tr>
+            <!-- 3. -->
+            <tr>
               <td>
                 <b>Language : </b> Uses <i>XML</i> for view creation and <i>Kotlin / Java</i> for business logic.
               </td>
               <td>
                 <b>Language : </b> Uses only Kotlin for both UI and business logic.
               </td>
-             </tr>
-             <tr>
-              <td><b>Efficiency : </b> Requires a lot of boilerplate codes. For example showing a long list using RecyclerView, You need to create adapter, layout manager, list UI, and integrate them with models.</td>
-              <td><b>Efficiency : </b> Requires much less code than XML system. You can easily replace a RecyclerView with LazyColumn. Which requires only 2 lines to write.</td></td>
-             </tr>
+            </tr>
+            <tr>
+              <td><b>Efficiency : </b> Requires a lot of boilerplate codes. For example showing a long list using
+                RecyclerView, You need to create adapter, layout manager, list UI, and integrate them with models.</td>
+              <td><b>Efficiency : </b> Requires much less code than XML system. You can easily replace a RecyclerView
+                with LazyColumn. Which requires only 2 lines to write.</td>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
 
       <!-- Load sidebar -->
       <script>
-    fetch('sidebar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('sidebar-container').innerHTML = data;
-      });
-  </script>
+        fetch('sidebar.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('sidebar-container').innerHTML = data;
+          });
+      </script>
       <script src="script/script.js"></script>
 </body>
 

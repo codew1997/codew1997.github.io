@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CodeBox - Blogs</title>
+  <!-- Google Fonts used (linking, not embedding proprietary files) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+  <div id="sidebar-container"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">CODEBOX</a>
+      <nav class="nav">
+        <a href="#">Blog</a>
+        <a href="#">YouTube</a>
+        <a href="#">GitHub</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <article class="post-card">
+      <h1 class="post-title">Side - effects in Compose</h1>
+      <div class="post-meta">
+        <div class="author">
+          <img src="img/pijush.png" alt="Author" class="author-img" />
+          <div>
+            <div class="author-name">Pijush Manna</div>
+            <div class="post-date">September 19, 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <img src="img/comp_vs_and.png" alt="Hero" class="hero" />
+
+      <div class="post-body">
+        A <b>Side-effect</b> is a change to the state of the App that happens outside the scope of the Composable
+        functions.
+
+        <h4>Types of Side effects : </h4>
+        <ol>
+          <p>
+            <b>
+              <li><code>LaunchEffect</code> :
+             Runs suspended functions in the scope of a Composable </b></li>
+            When LaunchEffect enters the Composition, It creates a coroutine with the given block of code. It doesn't
+            responds to the recomposition. If keys get changed of a LaunchEffect block, the coroutine gets canclled and
+            a new coroutine is launched with a new suspended block.<br />
+          <pre><code>LaunchedEffect(pulseRateMs) {
+    while (isActive) {
+        delay(pulseRateMs) // suspended
+        alpha.animateTo(0f)
+        alpha.animateTo(1f)
+    }
+}</code></pre>
+          </p>
+          <p>
+          <li>
+            <b><code>rememberCoroutineScope : </code> Obtains a composition-aware scope that can trigger coroutines outside of a Compose scope.</b>
+          </li>
+          As LaunchedEffect is a Composable function. It can only be used inside a composable scope. But if we need to trigger a coroutine outside composable scope but dismissed when leaves the composition, we can use <code>rememberCoroutineScope</code>. 
+          <pre><code>val scope = rememberCoroutineScope()
+
+    Scaffold(
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState)
+        }
+    ) { contentPadding ->
+        Column(Modifier.padding(contentPadding)) {
+            Button(
+                onClick = {
+                    // Create a new coroutine in the event handler to show a snackbar
+                    scope.launch {
+                        snackbarHostState.showSnackbar("Something happened!")
+                    }
+                }
+            ) {
+                Text("Press me")
+            }
+        }
+    }</code></pre>
+  </p>
+  <li>
+    <p>
+      <b><code>rememberUpdatedState: </code> The reference value in an effect that shouldn't restart if the value changes. </b><br/>
+      In the below example <code>currentOnTimeout</code> will always refer to the lastest onTimeout method. But it will not trigger the LaunchEffect.
+      <pre><code>@Composable
+fun LandingScreen(onTimeout: () -> Unit) {
+
+    // This will always refer to the latest onTimeout function that
+    // LandingScreen was recomposed with
+    val currentOnTimeout by rememberUpdatedState(onTimeout)
+
+    // Create an effect that matches the lifecycle of LandingScreen.
+    // If LandingScreen recomposes, the delay shouldn't start again.
+    LaunchedEffect(true) {
+        delay(SplashWaitTimeMillis)
+        currentOnTimeout()
+    }
+
+    /* Landing screen content */
+}</code></pre>
+    </p>
+  </li>
+        </ol>
+      </div>
+
+      <!-- Load sidebar -->
+      <script>
+        fetch('sidebar.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('sidebar-container').innerHTML = data;
+          });
+      </script>
+      <script src="script/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Outcome-style Blog — Demo</title>
+  <!-- Google Fonts used (linking, not embedding proprietary files) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+  <div id="sidebar-container"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">CODEBOX</a>
+      <nav class="nav">
+        <a href="#">Blog</a>
+        <a href="#">YouTube</a>
+        <a href="#">GitHub</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <article class="post-card">
+      <h1 class="post-title">What are Composable functions ?</h1>
+      <div class="post-meta">
+        <div class="author">
+          <img src="img/pijush.png" alt="Author" class="author-img" />
+          <div>
+            <div class="author-name">Pijush Manna</div>
+            <div class="post-date">September 19, 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <img src="img/comp_vs_and.png" alt="Hero" class="hero" />
+
+      <div class="post-body">
+        <p>Composable functions are Kotlin Functions annoted with <code>@Composable</code> annotation. Is serves as the fundamental UI blocks of Compose. Key characteristics include their immutability, the ability to be called multiple times with the same arguments without side effects, and their role in recomposition, where a new UI is generated when their input parameters change. </p>
+
+        <p>
+          <h4>Key Concepts : </h4>
+          <ul>
+            
+            <li> @Composable annotation : It tells the system that this function is used for building UI in Compose. </li> 
+            <li> Declarative UI : You describe what the UI should look like rather than manipulate pre-made view components. </li>
+            <li> Input Parameters : Composable function accepts input parameters which decides how the UI should look like. </li>
+            <li> Recomposition : Composable functions are immutable in nature. But they can be redrawn once change in state this phenomenon is called recomposition. Only the part of the UI will be redrawn for which state is changed.</li>
+            <li> State : State refers to any value that can change overtime and triggers recomposition on every change is called a State. </li>
+          </ul>
+        </p>
+        <p>
+          <h4> Stateful composable vs Stateless composable : </h4>
+            <ul>
+              <li>Stateful Composables : Composables that manages their state internally is called Stateful Composables. For example <code>TextField</code> manages its state internally.</li>
+              <li>Stateless Composables: Composables that takes their state from outside. Is called Stateless Composables.For example <code>Text</code> takes its state from outside.</li>
+            </ul>
+          
+        </p>
+      </div>
+
+
+
+      <!-- Load sidebar -->
+      <script>
+        fetch('sidebar.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('sidebar-container').innerHTML = data;
+          });
+      </script>
+      <script src="script/script.js"></script>
+</body>
+
+</html>
