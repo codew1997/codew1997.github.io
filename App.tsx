@@ -5,7 +5,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Features from './pages/Features';
-import Blog from './pages/Blog';
+import BlogList from './components/BlogList';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -26,7 +26,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/features" element={<Features />} />
-            <Route path="/blog/*" element={<Blog />} />
+            <Route path="/blog/*" element={<BlogList />} />
           </Routes>
         </Layout>
       </Router>

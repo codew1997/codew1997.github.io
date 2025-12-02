@@ -1,8 +1,8 @@
 import { BlogPost, Feature } from './types';
 
 export const SITE_NAME = "CodeBox";
-export const SITE_URL = "https://yourusername.github.io/codebox";
-export const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.example.codebox";
+export const SITE_URL = "https://codew1997.github.io/";
+export const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.codebox.www&hl=en_IN";
 
 // Mock markdown content to simulate file loading for the static site experience
 const POST_1_CONTENT = `
