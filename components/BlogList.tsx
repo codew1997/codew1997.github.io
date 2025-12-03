@@ -5,7 +5,10 @@ export default function BlogList() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    loadPosts().then(setPosts);
+    loadPosts().then((result) => {
+      console.log("POSTS LOADED:", result);
+      setPosts(result);
+    }); 
   }, []);
 
   return (
